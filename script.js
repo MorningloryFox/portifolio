@@ -1,29 +1,5 @@
-const systems = {
-  rag: { label: 'KNOWLEDGE MESH / RAG', title: 'Do documento<br />à resposta<br /><em>rastreável.</em>', copy: 'Uma arquitetura RAG separa ingestão, representação vetorial, recuperação e geração para que a resposta mantenha o vínculo com a fonte.', nodes: ['DOCUMENTOS', 'CHUNK + EMBED', 'QDRANT', 'RETRIEVER', 'LLM', 'RESPOSTA + FONTES'] },
-  agent: { label: 'AGENT CONTROL / ORCHESTRATION', title: 'Planejar, agir,<br />observar e<br /><em>revisar.</em>', copy: 'Um supervisor orquestra ferramentas especializadas, preservando controle humano e rastreabilidade de cada etapa do workflow.', nodes: ['INPUT', 'SUPERVISOR', 'RESEARCH TOOL', 'DATA TOOL', 'REVIEW TOOL', 'HUMAN CHECK'] },
-  eval: { label: 'MODEL LENS / EVALUATION', title: 'Escolhas guiadas<br />por <em>evidência,</em><br />não hype.', copy: 'Casos sintéticos e critérios explícitos permitem comparar qualidade, relevância, custo e latência antes de uma decisão técnica.', nodes: ['CASOS SINTÉTICOS', 'EVAL RUNNER', 'QUALITY METRICS', 'COST + LATENCY', 'HUMAN REVIEW', 'DECISION LOG'] },
-};
-const blueprint = document.querySelector('#blueprint');
-const label = document.querySelector('#architecture-label');
-const title = document.querySelector('#architecture-title');
-const copy = document.querySelector('#architecture-copy');
-function renderSystem(key) {
-  const system = systems[key];
-  label.textContent = system.label;
-  title.innerHTML = system.title;
-  copy.textContent = system.copy;
-  blueprint.innerHTML = system.nodes.map((node, index) => `<div class="blue-node n${index}"><span>0${index + 1}</span>${node}</div>${index < system.nodes.length - 1 ? '<i class="blue-line"></i>' : ''}`).join('');
-}
-document.querySelectorAll('.project-card').forEach((card) => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.project-card').forEach((item) => item.classList.toggle('active', item === card));
-    renderSystem(card.dataset.project);
-    document.querySelector('#systems').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-});
-document.querySelector('#health').addEventListener('click', async () => {
-  const result = document.querySelector('#health-result'); result.textContent = 'CHECKING FUNCTION…';
-  try { const response = await fetch('/.netlify/functions/portfolio-health'); const data = await response.json(); result.textContent = response.ok ? `NETLIFY FUNCTION / ${data.status.toUpperCase()} / ${data.environment}` : 'NETLIFY FUNCTION / ERROR'; }
-  catch { result.textContent = 'NETLIFY FUNCTION / AVAILABLE AFTER DEPLOY'; }
-});
-renderSystem('rag');
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const projects={rag:{type:'RAG / QDRANT / FASTAPI',title:'Vector Intelligence',desc:'Recuperação vetorial transforma documentos em contexto rastreável para respostas fundamentadas.',copy:'Ingestão, embeddings e recuperação são camadas distintas para preservar a origem do contexto.',diagram:'flowchart LR\nA[Documentos]-->B[Chunking + Embeddings]\nB-->C[(Qdrant)]\nQ[Consulta]-->D[Retriever]\nC-->D\nD-->E[LLM + Contexto]\nE-->F[Resposta + fontes]',shots:['INGEST PIPELINE\nPDF → CHUNKS → EMBEDDINGS → QDRANT','RETRIEVAL TRACE\nTOP MATCH 0.94 · decisao_arquitetura.md\nTOP MATCH 0.88 · politica_dados.pdf','GROUNDED ANSWER\nResposta vinculada às fontes recuperadas.']},agent:{type:'LANGGRAPH / PYTHON / TOOLS',title:'Agent Runtime',desc:'Workflow agêntico com planejamento, tools e validação como etapas explícitas e observáveis.',copy:'O supervisor mantém o estado do fluxo, roteia tools e entrega a decisão a uma revisão humana.',diagram:'flowchart TD\nA[Solicitação]-->B[Supervisor LangGraph]\nB-->C{Plano}\nC-->D[Research Tool]\nC-->E[Data Tool]\nD-->F[Evidence Store]\nE-->F\nF-->G[Human Review]\nG-->H[Resposta]',shots:['STATE GRAPH\nINPUT → SUPERVISOR → TOOLS → HUMAN CHECK','TOOL EXECUTION\ninput: query + constraints\n✓ evidence_id: EVT-042','OBSERVABILITY\nplan created → tool run → evidence stored → review']},eval:{type:'EVALS / OBSERVABILITY / COST',title:'Model Evaluation Lab',desc:'Bancada de comparação com casos sintéticos, critérios explícitos e revisão humana.',copy:'Casos controlados alimentam métricas de qualidade e custo; a decisão final continua humana e rastreável.',diagram:'flowchart LR\nA[Casos sintéticos]-->B[Evaluation Runner]\nB-->C[Faithfulness]\nB-->D[Relevance]\nB-->E[Latency + Cost]\nC-->F[Scorecard]\nD-->F\nE-->F\nF-->G[Human Decision]',shots:['TEST SUITE\nCASE-01 retrieval conflict ✓\nCASE-02 incomplete context ✓','SCORECARD\nFAITHFULNESS ████████░░\nRELEVANCE ███████░░░\nLATENCY ██████░░░░','DECISION GATE\nMODEL CANDIDATE → TECHNICAL REVIEW → DECISION LOG']}};
+let current='rag',slide=0;const $=s=>document.querySelector(s);mermaid.initialize({startOnLoad:false,theme:'base',securityLevel:'strict',themeVariables:{primaryColor:'#111b2c',primaryTextColor:'#eaf0f8',primaryBorderColor:'#50d5ff',lineColor:'#c8ff36',secondaryColor:'#17243a',tertiaryColor:'#0b101a'}});
+async function render(){const p=projects[current];$('#case-type').textContent=p.type;$('#case-title').textContent=p.title;$('#case-description').textContent=p.desc;$('#architecture-copy').textContent=p.copy;$('#gallery').innerHTML=`<pre>${p.shots[slide]}</pre>`;$('#caption').textContent=`TELA ${String(slide+1).padStart(2,'0')} / ${p.title} · estudo sintético`;try{const {svg}=await mermaid.render(`d-${current}-${Date.now()}`,p.diagram);$('#diagram').innerHTML=svg}catch{$('#diagram').textContent='Diagrama indisponível.'}}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{current=b.dataset.project;slide=0;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('active',x===b));render()});$('#prev').onclick=()=>{slide=(slide+2)%3;render()};$('#next').onclick=()=>{slide=(slide+1)%3;render()};render();

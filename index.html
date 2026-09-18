@@ -1,73 +1,14 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Daniel Alfredo Silva dos Santos — AI Engineer Specialist." />
-  <title>Daniel Silva / AI Systems Engineer</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="grid-bg" aria-hidden="true"></div>
-  <header class="nav-shell">
-    <a href="#top" class="brand">DAS<span>.</span>AI</a>
-    <nav><a href="#work">Laboratório</a><a href="#systems">Sistemas</a><a href="#about">Sobre</a></nav>
-    <a class="signal" href="#contact"><i></i> OPEN TO BUILD</a>
-  </header>
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="kicker"><span></span> AI ENGINEER SPECIALIST / BRASIL</p>
-        <h1>Engenharia<br />para sistemas<br /><em>que raciocinam.</em></h1>
-        <p class="intro">Pesquisa aplicada, agentes e recuperação de conhecimento para tornar IA uma capacidade operacional — não apenas uma interface de texto.</p>
-        <div class="hero-actions"><a href="#work">explorar projetos <b>↓</b></a><button class="health" id="health" type="button">NETLIFY / CHECK</button></div>
-        <p class="health-result" id="health-result" aria-live="polite"></p>
-      </div>
-      <div class="system-orbit" aria-label="Mapa de capacidades">
-        <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
-        <span class="node node-a">RAG</span><span class="node node-b">TOOLS</span><span class="node node-c">EVALS</span><span class="node node-d">AGENTS</span>
-        <div class="core"><small>CORE</small><strong>AI<br />SYSTEMS</strong><i>● ONLINE</i></div>
-      </div>
-    </section>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Daniel Silva / AI Engineer</title><link rel="stylesheet" href="styles.css"></head>
+<body><div class="grid"></div><header><a class="brand" href="#top">DAS<span>/</span>SYS</a><nav><a href="#projects">Projetos</a><a href="#architecture">Arquiteturas</a><a href="#profile">Perfil</a></nav><a href="#contact">CONTATO ↗</a></header>
+<main id="top"><section class="hero"><div><p class="eyebrow">AI ENGINEER / SYSTEMS BUILDER</p><h1>Hard-code<br>para <em>inteligência</em><br>que funciona.</h1><p>Construo sistemas de IA com Python, APIs, recuperação vetorial, workflows explícitos e avaliação contínua — onde arquitetura e contexto importam tanto quanto o modelo.</p><a class="cta" href="#projects">VER PROJETOS ↓</a></div><div class="terminal"><small>runtime / architecture.json</small><pre><b>$</b> load profile --focus=engineering
+✓ Python / APIs / LangGraph
+✓ Vector retrieval / Qdrant
+✓ Evaluation / observability
 
-    <section class="marquee" aria-label="Especialidades"><div>LANGGRAPH <b>✦</b> RAG ARCHITECTURE <b>✦</b> LLM EVALUATION <b>✦</b> MULTI-AGENT SYSTEMS <b>✦</b> PYTHON <b>✦</b> LANGGRAPH <b>✦</b> RAG ARCHITECTURE <b>✦</b></div></section>
-
-    <section class="work section" id="work">
-      <div class="section-head"><p class="kicker">01 / SELECTED LABS</p><h2>Três cenários.<br /><em>Uma obsessão:</em> contexto.</h2><p>Protótipos demonstrativos baseados nas frentes técnicas em que atuo. As arquiteturas abaixo representam padrões de engenharia, não produtos corporativos publicados.</p></div>
-      <div class="project-list">
-        <article class="project-card active" data-project="rag">
-          <div class="project-meta"><span>01</span><span>RAG / KNOWLEDGE SYSTEM</span><span>PYTHON · QDRANT · LLM</span></div>
-          <div class="project-screen rag-screen"><div class="screen-bar"><i></i><i></i><i></i><b>KNOWLEDGE_RETRIEVAL</b></div><div class="chat"><p class="question">Quais decisões impactam o roadmap?</p><div class="retrieval"><span>RETRIEVED / 03 SOURCES</span><b>Políticas e decisões recuperadas<br />com rastreabilidade de origem.</b></div><p class="answer">Resposta fundamentada no contexto recuperado, com fontes citáveis.</p></div><div class="vector-rail"><span>embed</span><i></i><i></i><i></i><i></i><span>query</span></div></div>
-          <div class="project-title"><h3>Knowledge<br /><em>Mesh</em></h3><button type="button" aria-label="Abrir arquitetura Knowledge Mesh">VER ARQUITETURA <b>↗</b></button></div>
-        </article>
-        <article class="project-card" data-project="agent">
-          <div class="project-meta"><span>02</span><span>AGENTIC WORKFLOW</span><span>LANGGRAPH · n8n · TOOLS</span></div>
-          <div class="project-screen agent-screen"><div class="agent-grid"><div class="agent-box supervisor">SUPERVISOR <i>●</i></div><div class="agent-box">RESEARCH<br /><small>tool</small></div><div class="agent-box">DATA<br /><small>tool</small></div><div class="agent-box">REVIEW<br /><small>tool</small></div><svg viewBox="0 0 400 210" aria-hidden="true"><path d="M200 60V100M200 100H65M200 100H200M200 100H335M65 100V135M200 100V135M335 100V135" /></svg></div><p class="run-status">RUN / PLAN → ACT → OBSERVE → REVIEW</p></div>
-          <div class="project-title"><h3>Agent<br /><em>Control</em></h3><button type="button" aria-label="Abrir arquitetura Agent Control">VER ARQUITETURA <b>↗</b></button></div>
-        </article>
-        <article class="project-card" data-project="eval">
-          <div class="project-meta"><span>03</span><span>MODEL EVALUATION</span><span>BENCHMARKS · QUALITY · COST</span></div>
-          <div class="project-screen eval-screen"><div class="eval-nav"><b>EVAL_LAB</b><span>SCENARIO / SYNTHETIC</span></div><div class="score-grid"><div><small>FAITHFULNESS</small><i style="--w:82%"></i></div><div><small>ANSWER RELEVANCE</small><i style="--w:74%"></i></div><div><small>LATENCY</small><i style="--w:58%"></i></div><div><small>COST PROFILE</small><i style="--w:67%"></i></div></div><div class="eval-foot"><span>TEST CASES / 24</span><span>HUMAN REVIEW / REQUIRED</span></div></div>
-          <div class="project-title"><h3>Model<br /><em>Lens</em></h3><button type="button" aria-label="Abrir arquitetura Model Lens">VER ARQUITETURA <b>↗</b></button></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="architecture section" id="systems">
-      <div class="architecture-top"><p class="kicker">02 / SYSTEM BLUEPRINT</p><p class="architecture-note">Selecione um laboratório acima para trocar a visão.</p></div>
-      <div class="architecture-body">
-        <div><p class="system-label" id="architecture-label">KNOWLEDGE MESH / RAG</p><h2 id="architecture-title">Do documento<br />à resposta<br /><em>rastreável.</em></h2><p id="architecture-copy">Uma arquitetura RAG separa ingestão, representação vetorial, recuperação e geração para que a resposta mantenha o vínculo com a fonte.</p></div>
-        <div class="blueprint" id="blueprint" aria-label="Diagrama de arquitetura"></div>
-      </div>
-    </section>
-
-    <section class="about section" id="about">
-      <p class="kicker">03 / PROFILE</p>
-      <div class="about-layout"><h2>Entre pesquisa<br />e <em>execução.</em></h2><div><p class="large-copy">Atuo no ecossistema de IA com foco em avaliação de ferramentas e modelos, soluções agênticas, assistentes conversacionais e arquiteturas RAG.</p><p>Minha base em Física apoia uma abordagem analítica para decisões orientadas a evidências. Na prática, trabalho com Python, SQL, LangChain, LangGraph, n8n, Copilot Studio, Rovo e bancos vetoriais como FAISS, ChromaDB e Qdrant.</p><div class="tags"><span>LLM BENCHMARKING</span><span>ReAct</span><span>WORKFLOWS</span><span>VECTOR SEARCH</span><span>LOW-CODE + CODE</span></div></div></div>
-    </section>
-
-    <section class="contact" id="contact"><p class="kicker">04 / CONTACT</p><h2>Vamos colocar<br />uma ideia em<br /><em>movimento.</em></h2><div class="contact-row"><a href="https://www.linkedin.com/in/das1" target="_blank" rel="noreferrer">LINKEDIN <b>↗</b></a><a href="https://github.com/MorningloryFox" target="_blank" rel="noreferrer">GITHUB <b>↗</b></a><span>© 2026 DAS / AI SYSTEMS</span></div></section>
-  </main>
-  <script src="script.js"></script>
-</body>
-</html>
+status: designing reliable AI systems_</pre><div><span>EMBED</span><span>RETRIEVE</span><span>REASON</span><span>VERIFY</span></div></div></section>
+<section class="quote">“O que impressiona não é o prompt. É o sistema que sustenta a resposta.” <span>ARQUITETURA · CONTEXTO · EVIDÊNCIA</span></section>
+<section class="section projects" id="projects"><div class="intro"><p class="eyebrow">01 / PROJECT GALLERY</p><h2>Projetos para<br>explorar por dentro.</h2><p>Estudos demonstrativos de arquitetura baseados nas minhas frentes de atuação. As telas, dados e resultados são sintéticos.</p></div><div class="tabs"><button class="active" data-project="rag">01 <b>Vector Intelligence</b><small>RAG / QDRANT / FASTAPI</small></button><button data-project="agent">02 <b>Agent Runtime</b><small>LANGGRAPH / PYTHON / TOOLS</small></button><button data-project="eval">03 <b>Model Evaluation Lab</b><small>EVALS / OBSERVABILITY / COST</small></button></div><article class="case"><div><p class="eyebrow" id="case-type"></p><h3 id="case-title"></h3><p id="case-description"></p></div><div class="gallery"><button id="prev">←</button><div id="gallery"></div><button id="next">→</button></div><p id="caption"></p></article></section>
+<section class="section architecture" id="architecture"><div class="intro"><p class="eyebrow">02 / ARCHITECTURE MAP</p><h2>Como cada<br><em>sistema</em> pensa.</h2><p id="architecture-copy"></p></div><div class="mermaid-shell"><div id="diagram"></div><p>Diagrama Mermaid · arquitetura de referência</p></div></section>
+<section class="section profile" id="profile"><p class="eyebrow">03 / ABOUT</p><div><h2>Pesquisa para<br>construir. Código<br>para <em>entregar.</em></h2><div><p class="big">AI Engineer Specialist com foco em avaliação de modelos e ferramentas, sistemas agênticos, assistentes conversacionais e arquiteturas RAG.</p><p>Minha base analítica em Física apoia decisões orientadas a evidências. Trabalho com Python, SQL, LangChain, LangGraph, APIs, FAISS, ChromaDB e Qdrant, conectando experimentação a soluções técnicas sustentáveis.</p><div class="stack"><span>PYTHON</span><span>FASTAPI</span><span>LANGGRAPH</span><span>LANGCHAIN</span><span>QDRANT</span><span>CHROMADB</span><span>FAISS</span><span>SQL</span><span>AWS</span><span>LLM EVALS</span></div></div></div></section>
+<section class="contact" id="contact"><p class="eyebrow">04 / LET'S BUILD</p><h2>Vamos projetar<br>o próximo<br><em>sistema?</em></h2><a href="https://www.linkedin.com/in/das1" target="_blank">LINKEDIN ↗</a><a href="https://github.com/MorningloryFox" target="_blank">GITHUB ↗</a></section></main><script type="module" src="script.js"></script></body></html>
