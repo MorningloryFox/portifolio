@@ -1,3 +1,5 @@
 .netlify/
 .env
 npm-debug.log*
+edge-profile/
+portfolio-preview.png
